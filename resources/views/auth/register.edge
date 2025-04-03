@@ -1,110 +1,71 @@
-@!DOCTYPE html
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Buat Akun OxyPlant</title>
-  @entryPointStyles('app')
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .form-input {
-      transition: all 0.2s ease;
-    }
-  </style>
-</head>
-<body class="flex min-h-screen">
-  <!-- Bagian Kiri: Background Gambar -->
-  <div class="w-1/2 min-h-screen bg-cover bg-center" style="background-image: url('/resources/img/d2.jpeg');"></div>
+@layouts.main()
+@slot('title')
+Register Page
+@endslot
 
-  <!-- Bagian Kanan: Form Registrasi -->
-  <div class="w-1/2 flex items-center justify-center p-8" style="background-color: #F2F1EB;">
-    <div class="w-full max-w-md flex flex-col">
-      <div class="text-center mb-8">
-        <h2 class="text-3xl font-bold text-green-700 mb-2">Buat Akun OxyPlant</h2>
-        <p class="text-gray-600">Satu akun untuk semua produk Garden OxyPlant</p>
-      </div>
-
-      <form method="POST" class="space-y-4 flex-grow flex flex-col">
-        @csrf
-
-        <div class="flex-grow">
-          <div>
-            <label for="name" class="block text-gray-700 text-sm font-medium mb-1">Nama Lengkap</label>
-            <input 
-              type="text" 
-              name="name" 
-              id="name" 
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" 
-              required
-            >
+@slot('body')
+<div class="flex justify-center mt-5 mb-32">
+  <div class="section-container flex items-center">
+    <!-- Bagian Kiri: Gambar -->
+    <div class="w-2/3">
+      <img src="{{ asset('resources/img/d2.jpeg') }}" alt="Logo" class="section-logo w-full">
+    </div>
+    
+    <!-- Bagian Kanan: Formulir Registrasi -->
+    <div class="card ml-16 bg-black rounded-xl border border-[#38B6FF] shadow-blue p-6 relative">
+      <div class="shadow-lg p-8">
+        <h2 class="text-4xl text-center font-bold text-white mb-4">Sign Up</h2>
+        
+        <form action="{{ route('auth.register.store') }}" method="POST">
+          {{ csrfField() }}
+          
+          <!-- NAME -->
+          <div class="mb-4">
+            <label for="fullname" class="block text-white text-xl font-semibold mb-2">Name:</label>
+            <input type="text" id="fullname" name="fullname"
+              class="bg-[#1E1F26] w-full px-3 py-2 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500"
+              placeholder="Enter your name" style="width: 300px; height: 40px;">
+            @inputError('fullname')
+              <p class="text-red-500 text-sm">{{ $messages.join(', ') }}</p>
+            @end
           </div>
 
-          <div class="mt-4">
-            <label for="username" class="block text-gray-700 text-sm font-medium mb-1">Username</label>
-            <input 
-              type="text" 
-              name="username" 
-              id="username" 
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" 
-              required
-            >
+          <!-- EMAIL -->
+          <div class="mb-4">
+            <label for="email" class="block text-white text-xl font-semibold mb-2">Email:</label>
+            <input type="email" id="email" name="email"
+              class="bg-[#1E1F26] w-full px-3 py-2 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500"
+              placeholder="Enter your email" style="width: 300px; height: 40px;">
+            @inputError('email')
+              <p class="text-red-500 text-sm">{{ $messages.join(', ') }}</p>
+            @end
           </div>
 
-          <div class="mt-4">
-            <label for="email" class="block text-gray-700 text-sm font-medium mb-1">Email</label>
-            <input 
-              type="email" 
-              name="email" 
-              id="email" 
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" 
-              required
-            >
-            <p class="text-gray-500 text-xs mt-1">Kami bisa mengubahnya nanti di profil akun</p>
+          <!-- PASSWORD -->
+          <div class="mb-4">
+            <label for="password" class="block text-white text-xl font-semibold mb-2">Password:</label>
+            <input type="password" id="password" name="password"
+              class="bg-[#1E1F26] w-full px-3 py-2 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500"
+              placeholder="Enter your password" style="width: 300px; height: 40px;">
+            @inputError('password')
+              <p class="text-red-500 text-sm">{{ $messages.join(', ') }}</p>
+            @end
           </div>
 
-          <div class="bg-green-50 p-3 rounded-lg mt-4">
-            <p class="text-green-800 text-xs">Kami mengkomitmen privasi dan tidak akan membagikan data pribadi</p>
+          <!-- Tombol Register -->
+          <div class="flex mt-10 justify-center">
+            <button type="submit"
+              class="bg-[#38B6FF] hover:bg-blue-700 text-black font-bold py-2 px-8 rounded-xl">Register</button>
           </div>
-
-          <div class="mt-4">
-            <label for="password" class="block text-gray-700 text-sm font-medium mb-1">Kata Sandi</label>
-            <input 
-              type="password" 
-              name="password" 
-              id="password" 
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" 
-              required
-            >
-          </div>
-
-          <div class="mt-4">
-            <label for="password_confirmation" class="block text-gray-700 text-sm font-medium mb-1">Konfirmasi Kata Sandi</label>
-            <input 
-              type="password" 
-              name="password_confirmation" 
-              id="password_confirmation" 
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg form-input focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" 
-              required
-            >
-          </div>
-        </div>
-
-        <div class="mt-auto text-center">
-          <button type="submit" class="w-full max-w-xs bg-gradient-to-r from-green-500 to-green-600 text-white py-2.5 px-4 rounded-lg font-medium hover:from-green-600 hover:to-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition shadow-sm">
-            Daftar
-          </button>
-        </div>
-      </form>
-
-      <div class="text-center mt-6">
-        <p class="text-sm text-gray-600">
-          Sudah punya akun? 
-          <a href="#" class="text-green-700 font-medium hover:underline">Masuk disini</a>
-        </p>
+          
+          <!-- Link Login -->
+          <p class="mt-2 text-center text-white">Already have an account? 
+            <a href="{{route('auth.login.show')}}" class="text-[#38B6FF] hover:text-blue-700">Login</a>
+          </p>
+        </form>
       </div>
     </div>
   </div>
-
-  @entryPointScripts('app')
-</body>
-</html>
+</div>
+@endslot
+@end

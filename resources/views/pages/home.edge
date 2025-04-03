@@ -1,13 +1,144 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-  </head>
-  <body>
-    <h1 class="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-  </body>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OxyPlant</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .nav-bg, .hero-bg {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                  url('resources/img/d2.jpeg');
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .nav-bg {
+      background-attachment: fixed; /* Agar background konsisten saat scroll */
+      padding: 1rem 0;
+    }
+    
+    .hero-bg {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+    }
+  </style>
+</head>
+<body class="font-roboto">
+
+<!-- Navigation dengan background sama -->
+<nav class="nav-bg shadow-sm py-4 px-6 sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto flex justify-between items-center">
+    <div class="text-2xl font-bold text-white">OxyPlant</div>
+    
+      <div class="hidden md:flex space-x-6 items-center">
+          <a href="#" class="text-white hover:text-green-600">Home</a>
+          <a href="#" class="text-white hover:text-green-600">Garden Manager</a>
+          <a href="#" class="text-white hover:text-green-600">Plant Care</a>
+          <a href="#" class="text-white hover:text-green-600">Plant Info</a>
+          <a href="#" class="text-white hover:text-green-600">About</a>
+          <a href="#" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg ml-4">Get Started</a>
+      </div>
+      
+      <button class="md:hidden text-gray-800">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+      </button>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<div class="hero-bg relative">
+  <div class="container mx-auto px-6 text-white">
+      <!-- Banner (remains in original position) -->
+      <div class="save-our-planet-banner">
+          <img src="resources/img/banner.png" alt="Save Our Planet" class="banner-image">
+      </div>
+      
+      <!-- Text Content - Adjusted to not overlap banner -->
+      <div class="relative z-20 ml-[680px] pt-12"> <!-- Increased left margin to 450px -->
+          <!-- Heading -->
+          <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">
+            Jadikan Rumah Lebih<br>Hijau dengan OxyPlant!
+          </h1>
+
+          <!-- Paragraph -->
+          <p class="text-sm md:text-lg mb-6 sm-w-md leading-relaxed">
+              Kelola koleksi tanamamu, pelajari perawatannya,<br>
+              dan bergabung dengan komunitas pecinta<br> tanaman hanya dalam satu aplikasi
+          </p>
+          
+          <!-- Button -->
+          <a href="#" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-8 rounded-lg text-lg transition duration-300">
+              Try OxyPlant Now
+          </a>
+      </div>
+  </div>
+</div>
+
+<style>
+  .save-our-planet-banner {
+    position: absolute;
+    left: 24%; /* Posisi dari kiri */
+    top: 66%;
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+  
+  .banner-image {
+    height: 470px; /* Ukuran besar */
+    width: auto; /* Pertahankan aspect ratio */
+    max-width: 350px; /* Lebar maksimal */
+    object-fit: contain;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); /* Efek bayangan */
+  }
+</style>
+
+<!-- Features Section -->
+<div class="container mx-auto text-center py-16">
+    <h2 class="text-3xl font-bold mb-6">Rencanakan, Rawat, dan Nikmati Keindahan Tanaman dengan Mudah</h2>
+    <p class="mb-10 text-gray-700">Kami di OxyPlant percaya bahwa setiap pecinta tanaman membutuhkan alat dan sumber daya terbaik untuk mewujudkan taman impian mereka.</p>
+    <div class="flex justify-center space-x-6">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <img src="resources/img/home1.png" alt="Feature 1" class="w-20 h-20 mx-auto mb-4">
+            <h3 class="text-lg font-semibold">Tanpa Instalasi, Langsung Pakai</h3>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <img src="resources/img/home2.png" alt="Feature 2" class="w-20 h-20 mx-auto mb-4">
+            <h3 class="text-lg font-semibold">Kalender Perawatan Otomatis</h3>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <img src="resources/img/home3.png" alt="Feature 3" class="w-20 h-20 mx-auto mb-4">
+            <h3 class="text-lg font-semibold">Panduan & Tips Perawatan</h3>
+        </div>
+    </div>
+</div>
+
+<!-- Plant Information Section -->
+<div class="bg-green-900 text-white text-center py-16">
+    <h2 class="text-3xl font-bold mb-6">Plant Information</h2>
+    <div class="flex justify-center space-x-6">
+        <div class="bg-white text-black p-6 rounded-lg shadow-lg">
+            <img src="resources/img/tanaman_langka.png" alt="Tanaman Langka" class="w-32 h-32 mx-auto">
+            <h3 class="text-lg font-semibold mt-4">Tanaman Langka</h3>
+        </div>
+        <div class="bg-white text-black p-6 rounded-lg shadow-lg">
+            <img src="resources/img/bunga.png" alt="Bunga" class="w-32 h-32 mx-auto">
+            <h3 class="text-lg font-semibold mt-4">Bunga</h3>
+        </div>
+        <div class="bg-white text-black p-6 rounded-lg shadow-lg">
+            <img src="resources/img/buah.png" alt="Buah" class="w-32 h-32 mx-auto">
+            <h3 class="text-lg font-semibold mt-4">Buah</h3>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-green-900 text-white py-10 text-center">
+    <p>&copy; 2025, All Rights Reserved.</p>
+</footer>
+
+</body>
 </html>
