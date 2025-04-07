@@ -11,6 +11,6 @@ export default class PagesController {
   }
 
   async contact({ view }: HttpContext) {
-    return view.render('pages/contact')
+    return view.render('pages/plant_info')
   }
 }
