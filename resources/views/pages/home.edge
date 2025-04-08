@@ -90,34 +90,50 @@
       }
     }
   </style>
+
 <!-- Navigation -->
 <nav class="nav-bg shadow-sm py-4 px-6 sticky top-0 z-50" id="main-nav">
   <div class="max-w-6xl mx-auto flex justify-between items-center">
     <!-- Logo -->
-    <div class="text-xl md:text-2xl font-bold nav-text-white">OxyPlant</div>
+    <div class="text-xl md:text-2xl font-bold nav-text-white">
+      <a href="#home" class="hover:no-underline">OxyPlant</a>
+    </div>
     
     <!-- Desktop Menu -->
     <div class="hidden md:flex space-x-4 lg:space-x-6 items-center">
-      <a href="#" class="nav-text-white hover:text-green-300 transition-colors duration-300 text-sm md:text-base">Home</a>
-      <a href="#" class="nav-text-white hover:text-green-300 transition-colors duration-300 text-sm md:text-base">Garden Manager</a>
-      <a href="#" class="nav-text-white hover:text-green-300 transition-colors duration-300 text-sm md:text-base">Plant Care</a>
-      <a href="#" class="nav-text-white hover:text-green-300 transition-colors duration-300 text-sm md:text-base">Plant Info</a>
-      <a href="#" class="nav-text-white hover:text-green-300 transition-colors duration-300 text-sm md:text-base">About</a>
-      <a href="#" class="bg-green-600 hover:bg-green-700 text-[#F1F0E9] px-3 py-1 md:px-4 md:py-2 rounded-lg ml-2 md:ml-4 transition-colors duration-300 text-sm md:text-base">
+      <a href="/" class="nav-text-white hover:text-green-300 transition-colors duration-300 text-sm md:text-base">Home</a>
+      <a href="{{ route('info.garden') }}" class="nav-text-white hover:text-green-300 transition-colors duration-300 text-sm md:text-base">Garden Manager</a>
+      <a href="{{ route('info.care') }}" class="nav-text-white hover:text-green-300 transition-colors duration-300 text-sm md:text-base">Plant Care</a>
+      <a href="{{ route('info.plant') }}" class="nav-text-white hover:text-green-300 transition-colors duration-300 text-sm md:text-base">Plant Info</a>
+      <a href="{{ route('info.about') }}" class="nav-text-white hover:text-green-300 transition-colors duration-300 text-sm md:text-base">About</a>
+      <a href="{{ route('auth.login.show') }}" class="bg-green-600 hover:bg-green-700 text-[#F1F0E9] px-3 py-1 md:px-4 md:py-2 rounded-lg ml-2 md:ml-4 transition-colors duration-300 text-sm md:text-base">
         Get Started
       </a>
     </div>
     
     <!-- Mobile Menu Button -->
-    <button id="mobile-menu-button" class="md:hidden text-[#F1F0E9] focus:outline-none transition-colors duration-300">
+    <button id="mobile-menu-button" class="md:hidden text-[#F1F0E9] focus:outline-none transition-colors duration-300" onclick="toggleMobileMenu()">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
       </svg>
     </button>
   </div>
+
+   <!-- Mobile Menu (hidden by default) -->
+   <div id="mobile-menu" class="hidden md:hidden pt-4 pb-2">
+    <a href="/" class="block nav-text-white hover:text-green-300 py-2 px-4">Home</a>
+    <a href="{{ route('info.garden') }}" class="block nav-text-white hover:text-green-300 py-2 px-4">Garden Manager</a>
+    <a href="{{ route('info.care') }}" class="block nav-text-white hover:text-green-300 py-2 px-4">Plant Care</a>
+    <a href="{{ route('info.plant') }}" class="block nav-text-white hover:text-green-300 py-2 px-4">Plant Info</a>
+    <a href="{{ route('info.about') }}" class="block nav-text-white hover:text-green-300 py-2 px-4">About</a>
+    <a href="{{ route('auth.login.show') }}" class="block bg-green-600 hover:bg-green-700 text-[#F1F0E9] py-2 px-4 rounded-lg mt-2 text-center">
+      Get Started
+    </a>
+  </div>
 </nav>
 
 <script>
+  // Scroll effect for navbar
   window.addEventListener('scroll', function() {
     const nav = document.getElementById('main-nav');
     if (window.scrollY > 50) {
@@ -126,10 +142,45 @@
       nav.classList.remove('scrolled');
     }
   });
+
+  // Mobile menu toggle function
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('hidden');
+  }
+
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth'
+        });
+        
+        // Close mobile menu if open
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (!mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+        }
+      }
+    });
+  });
+
+  // Function to handle plant category clicks
+  function handlePlantCategory(category) {
+    alert(`Anda memilih kategori: ${category}\nAnda akan diarahkan ke daftar tanaman dalam kategori ini.`);
+    // In a real app, you would filter/show plants by category
+  }
 </script>
 
 <!-- Hero Section -->
-<div class="hero-bg relative">
+<div class="hero-bg relative" id="home">
   <div class="container mx-auto px-4 lg:px-6 text-[#F1F0E9] h-full flex items-center">
     <!-- Banner Image -->
     <div class="save-our-planet-banner absolute left-[25%] xl:left-[29%] bottom-[-11%] -translate-y-[15%] z-10 w-[200px] sm:w-[250px] md:w-[300px] lg:w-[350px] transition-all duration-300">
@@ -147,7 +198,7 @@
         dan bergabung dengan komunitas pecinta tanaman hanya dalam satu aplikasi
       </p>
       
-      <a href="#" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-6 sm:py-3 sm:px-8 rounded-lg text-base sm:text-lg transition duration-300">
+      <a href="#get-started" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-6 sm:py-3 sm:px-8 rounded-lg text-base sm:text-lg transition duration-300" onclick="handleTryNow(event)">
         Try OxyPlant Now
       </a>
     </div>
@@ -181,7 +232,7 @@
 </style>
 
 <!-- Features Section -->
-<section class="py-12 md:py-16" style="background-color:#AFC8AD">
+<section class="py-12 md:py-16" style="background-color:#AFC8AD" id="garden-manager">
   <div class="container mx-auto px-4 md:px-6">
     <div class="text-center mb-12 md:mb-16">
       <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-[#0A5436]">
@@ -243,7 +294,7 @@
               Coba Garden Planner Kami<br>Sekarang – Gratis!
             </h2>
             <div class="pt-4">
-              <a href="#" class="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105">
+              <a href="{{ route('auth.login.show') }}" class="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105">
                 Get Started for Free
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -258,26 +309,26 @@
 </section>
 
 <!-- Plant Information Section -->
-<div class="bg-PInform bg-cover bg-center text-[#F1F0E9] text-center py-12 md:py-20 px-4 md:px-8">
+<div class="bg-PInform bg-cover bg-center text-[#F1F0E9] text-center py-12 md:py-20 px-4 md:px-8" id="plant-info">
   <div class="max-w-6xl mx-auto">
     <h2 class="text-3xl md:text-4xl font-bold mb-8 md:mb-12">Plant Information</h2>
     <div class="plant-info-cards flex flex-col md:flex-row justify-center items-stretch gap-6 md:gap-8">
       <!-- Card 1 -->
-      <div class="bg-[#F2F1EB] backdrop-blur-sm text-gray-800 p-6 rounded-xl shadow-xl w-full max-w-xs transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+      <div class="bg-[#F2F1EB] backdrop-blur-sm text-gray-800 p-6 rounded-xl shadow-xl w-full max-w-xs transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer" onclick="handlePlantCategory('Tanaman Langka')">
         <img src="resources/img/tanaman_langka.png" alt="Tanaman Langka" class="w-28 h-28 md:w-36 md:h-36 mx-auto object-contain">
         <h3 class="text-lg md:text-xl font-semibold mt-4 md:mt-6">Tanaman Langka</h3>
         <p class="text-sm md:text-base mt-2 text-gray-600">Temukan koleksi tanaman langka</p>
       </div>
       
       <!-- Card 2 -->
-      <div class="bg-[#F2F1EB] backdrop-blur-sm text-gray-800 p-6 rounded-xl shadow-xl w-full max-w-xs transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+      <div class="bg-[#F2F1EB] backdrop-blur-sm text-gray-800 p-6 rounded-xl shadow-xl w-full max-w-xs transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer" onclick="handlePlantCategory('Bunga')">
         <img src="resources/img/bunga.png" alt="Bunga" class="w-28 h-28 md:w-36 md:h-36 mx-auto object-contain">
         <h3 class="text-lg md:text-xl font-semibold mt-4 md:mt-6">Bunga</h3>
         <p class="text-sm md:text-base mt-2 text-gray-600">Ragam jenis bunga indah</p>
       </div>
       
       <!-- Card 3 -->
-      <div class="bg-[#F2F1EB] backdrop-blur-sm text-gray-800 p-6 rounded-xl shadow-xl w-full max-w-xs transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+      <div class="bg-[#F2F1EB] backdrop-blur-sm text-gray-800 p-6 rounded-xl shadow-xl w-full max-w-xs transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer" onclick="handlePlantCategory('Buah')">
         <img src="resources/img/buah.png" alt="Buah" class="w-28 h-28 md:w-36 md:h-36 mx-auto object-contain">
         <h3 class="text-lg md:text-xl font-semibold mt-4 md:mt-6">Buah</h3>
         <p class="text-sm md:text-base mt-2 text-gray-600">Tanaman buah produktif</p>
@@ -304,7 +355,7 @@
 </style>
 
 <!-- Plant Care Section -->
-<div class="bg-[#F1F0E9] py-12 md:py-16 px-6 md:px-8">
+<div class="bg-[#F1F0E9] py-12 md:py-16 px-6 md:px-8" id="plant-care">
   <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12">
     <!-- Text Content -->
     <div class="md:w-2/3">
@@ -313,8 +364,8 @@
         Merawat tanaman adalah aktivitas menyenangkan yang dapat menjadi hobi yang bermanfaat. 
         <span class="inline-block ml-2 text-green-600">✓</span>
       </p>
-      <a href="#" class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
-        Selengkapnya
+      <a href="{{ route('auth.register.show') }}" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-6 sm:py-3 sm:px-8 rounded-lg text-base sm:text-lg transition duration-300">
+        Try OxyPlant Now
       </a>
     </div>
     
@@ -342,11 +393,11 @@
       <div class="md:w-1/5">
         <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
         <ul class="space-y-2">
-          <li><a href="#" class="text-gray-300 hover:text-white transition">Home</a></li>
-          <li><a href="#" class="text-gray-300 hover:text-white transition">Garden Manager</a></li>
-          <li><a href="#" class="text-gray-300 hover:text-white transition">Plant Care</a></li>
-          <li><a href="#" class="text-gray-300 hover:text-white transition">Plant Info</a></li>
-          <li><a href="#" class="text-gray-300 hover:text-white transition">About</a></li>
+          <li><a href="#home" class="text-gray-300 hover:text-white transition">Home</a></li>
+          <li><a href="#garden-manager" class="text-gray-300 hover:text-white transition">Garden Manager</a></li>
+          <li><a href="#plant-care" class="text-gray-300 hover:text-white transition">Plant Care</a></li>
+          <li><a href="#plant-info" class="text-gray-300 hover:text-white transition">Plant Info</a></li>
+          <li><a href="#about" class="text-gray-300 hover:text-white transition">About</a></li>
           <li><a href="#" class="text-gray-300 hover:text-white transition">Contact</a></li>
           <li><a href="#" class="text-gray-300 hover:text-white transition">Login</a></li>
         </ul>
