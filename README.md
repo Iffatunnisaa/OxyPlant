@@ -1,54 +1,25 @@
-# OxyPlant 🌿
+# OxyPlant - Aplikasi Web untuk Manajemen Tanaman 🌿🌱
 
-OxyPlant is a fullstack web application for plant enthusiasts to manage their plant collections, track care routines, and discover plant information. Built with AdonisJS for a robust backend and modern frontend technologies.
+OxyPlant adalah platform berbasis web yang dirancang untuk membantu para penggemar tanaman dalam mengelola, merawat, dan mengembangkan koleksi tanaman mereka. Aplikasi ini menyediakan fitur seperti informasi tanaman, panduan perawatan tanaman, alat manajemen kebun, dan banyak lagi. Aplikasi ini mudah digunakan dan tidak memerlukan instalasi – kamu bisa mulai mengelola tanamanmu langsung! 🌍🌸
 
-## Features 🌟
+## Fitur ✨
 
-### 🌱 Plant Management
-- Track your plant collection with details
-- Organize plants into virtual gardens
-- Log watering, fertilizing, and other care activities
+- **Garden Manager** 🏡: Organisasi dan kelola kebunmu dengan mudah. Tambahkan, hapus, dan kategorikan tanaman dalam kebun virtualmu.
+- **Plant Care** 💧: Dapatkan jadwal perawatan yang dipersonalisasi untuk penyiraman, pemupukan, dan lainnya agar tanamanmu berkembang dengan baik.
+- **Plant Info** 📚: Akses informasi mendalam tentang berbagai tanaman, termasuk kebutuhan perawatan, kondisi tumbuh, dan penyakit umum.
+- **Desain Responsif** 📱: Aplikasi sepenuhnya responsif, bekerja dengan lancar di berbagai perangkat, mulai dari desktop hingga mobile.
+- **Akun Pengguna** 👤: Buat akun untuk menyimpan data tanaman, menerima tips perawatan yang dipersonalisasi, dan berinteraksi dengan komunitas penggemar tanaman.
 
-### 📊 Care Tracking
-- Schedule and record plant care routines
-- Receive care reminders
-- View care history and statistics
+## Teknologi yang Digunakan 💻
 
-### 📚 Plant Database
-- Comprehensive plant information
-- Care guides and tips
-- Search and discover new plants
+- **Frontend**: Edge, CSS, JavaScript, Tailwind CSS
+- **Backend**: AdonisJs v5 🌟 (menggunakan Node.js)
+- **Lainnya**: TypeScript 📝, JavaScript⚡
 
-### 🔒 User System
-- Secure authentication
-- Personalized profiles
-- Activity history
+### Instalasi 🖥
 
-## Technology Stack 💻
+1. Clone repositori ke mesin lokalmu:
 
-### Backend
-- **AdonisJS** (Node.js framework)
-- **Lucid ORM** for database interactions
-- **MySQL/PostgreSQL** database
-- **Redis** for caching (optional)
-- **Validator** for data validation
-- **Authentication** system
-
-### Frontend
-- **Tailwind CSS** for styling
-- **Alpine.js** for interactivity
-- **Edge templates** for server-side rendering
-- Responsive design
-
-## Getting Started 🚀
-
-### Prerequisites
-- Node.js (v14+)
-- npm or yarn
-- MySQL/PostgreSQL database
-
-### Installation
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/oxyplant.git
-cd oxyplant
+   ```bash
+   git clone https://github.com/username-anda/oxyplant.git
+   cd oxyplant
