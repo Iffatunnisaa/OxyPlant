@@ -1,23 +1,54 @@
-# OxyPlant 🌱
+# OxyPlant 🌿
 
-OxyPlant is a project built using AdonisJS, designed to provide a structured and scalable fullstack application.
+OxyPlant is a fullstack web application for plant enthusiasts to manage their plant collections, track care routines, and discover plant information. Built with AdonisJS for a robust backend and modern frontend technologies.
 
-## Features 🚀
+## Features 🌟
 
-- Built with **AdonisJS** framework
-- Secure authentication system
-- Database migration and seeding
-- Middleware for security and session management
-- Edge template engine for rendering views
-- CORS enabled for cross-origin requests
-- Lucid ORM for database interactions
+### 🌱 Plant Management
+- Track your plant collection with details
+- Organize plants into virtual gardens
+- Log watering, fertilizing, and other care activities
 
----
+### 📊 Care Tracking
+- Schedule and record plant care routines
+- Receive care reminders
+- View care history and statistics
 
-## Getting Started 🔧
+### 📚 Plant Database
+- Comprehensive plant information
+- Care guides and tips
+- Search and discover new plants
 
-### 1️⃣ Setup the Project  
-Use the AdonisJS CLI to install the blueprint:
+### 🔒 User System
+- Secure authentication
+- Personalized profiles
+- Activity history
 
+## Technology Stack 💻
+
+### Backend
+- **AdonisJS** (Node.js framework)
+- **Lucid ORM** for database interactions
+- **MySQL/PostgreSQL** database
+- **Redis** for caching (optional)
+- **Validator** for data validation
+- **Authentication** system
+
+### Frontend
+- **Tailwind CSS** for styling
+- **Alpine.js** for interactivity
+- **Edge templates** for server-side rendering
+- Responsive design
+
+## Getting Started 🚀
+
+### Prerequisites
+- Node.js (v14+)
+- npm or yarn
+- MySQL/PostgreSQL database
+
+### Installation
+1. Clone the repository:
 ```bash
-adonis new oxyplant
+git clone https://github.com/yourusername/oxyplant.git
+cd oxyplant
