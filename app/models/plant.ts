@@ -1,40 +1,35 @@
-// app/Models/Plant.ts
-import { DateTime } from 'luxon'
-import { BaseModel, column, belongsTo} from '@adonisjs/lucid/orm'
-import type { BelongsTo } from '@adonisjs/lucid/types/relations'
-import User from './user.js'
+// app/Schemas/PlantSchema.ts
+import mongoose, { Document, Schema } from 'mongoose'
 
-export default class Plant extends BaseModel {
-    @column({ isPrimary: true })
-    public id!: number  // Definite assignment assertion
-  
-    @column()
-    public userId!: number
-  
-    @column()
-    public name!: string
-  
-    @column()
-    public type!: 'sayuran' | 'buah' | 'herbal' | 'hias' | 'lainnya'
-  
-    @column.date()
-    public plantingDate!: DateTime
-  
-    @column()
-    public wateringSchedule!: number
-  
-    @column()
-    public photoPath!: string
-  
-    @column()
-    public notes?: string  // Optional field
-  
-    @column.dateTime({ autoCreate: true })
-    public createdAt!: DateTime
-  
-    @column.dateTime({ autoCreate: true, autoUpdate: true })
-    public updatedAt!: DateTime
-  
-    @belongsTo(() => User)
-    public user!: BelongsTo<typeof User>
+export interface IPlant extends Document {
+  userId: string
+  name: string
+  type: 'sayuran' | 'buah' | 'herbal' | 'hias' | 'lainnya'
+  plantingDate: Date
+  wateringSchedule: number
+  photoPath: string
+  notes?: string
+  createdAt: Date
+  updatedAt: Date
+}
+
+const PlantSchema: Schema = new Schema(
+  {
+    userId: { type: Schema.Types.ObjectId, required: true, ref: 'User' },
+    name: { type: String, required: true },
+    type: { 
+      type: String, 
+      enum: ['sayuran', 'buah', 'herbal', 'hias', 'lainnya'], 
+      required: true 
+    },
+    plantingDate: { type: Date, required: true },
+    wateringSchedule: { type: Number, required: true },
+    photoPath: { type: String, required: true },
+    notes: { type: String, default: null },
+  },
+  {
+    timestamps: true, // otomatis buat createdAt dan updatedAt
   }
+)
+
+export default mongoose.model<IPlant>('Plant', PlantSchema)

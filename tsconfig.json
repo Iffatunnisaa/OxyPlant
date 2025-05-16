@@ -5,13 +5,17 @@
     "outDir": "./build",
     "types": [
       "@adonisjs/core",
-      "@adonisjs/validator"
+      "@adonisjs/validator",
+      "mongoose"
     ],
     "paths": {
       "#controllers/*": ["./app/controllers/*.js"],
       "#middleware/*": ["./app/middleware/*.js"],
       "@ioc:*": ["./node_modules/@adonisjs/core/build/src/IocContainer/*"],
       "@ioc:Adonis/Core/*": ["./node_modules/@adonisjs/core/*"]
-    }
+    },
+    "moduleResolution": "NodeNext",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   }
 }

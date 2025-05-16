@@ -16,7 +16,7 @@ import { middleware } from './kernel.js'
 import ProfilController from '#controllers/profil_controller'
 import CreateController from '#controllers/managerCreate_controller'
 import LogoutController from '#controllers/auth/logout_controller'
-
+import CommunityController from '#controllers/community_controller'
 
 // router.on('/').render('auth/login')
 
@@ -50,6 +50,8 @@ router.get('/plant_care', [CareController, 'plant_care']).as('info.care')
 router.get('/profil', [ProfilController, 'profil']).as('info.profil')
 //.use(middleware.auth())
 router.get('/tambah_kebun', [CreateController, 'ManagerCreate']).as('info.kebun')
+//.use(middleware.auth())
+router.get('/community', [CommunityController, 'community']).as('info.community')
 //.use(middleware.auth())
 
 router.group(() => {
