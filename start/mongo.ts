@@ -1,7 +1,13 @@
 import mongoose from 'mongoose'
 
+const mongoUri = process.env.MONGODB_URI
+
+if (!mongoUri) {
+  throw new Error('❌ MONGODB_URI is not defined in environment variables')
+}
+
 mongoose
-  .connect('mongodb://127.0.0.1:27017/adonis_mongo_auth', {
+  .connect(mongoUri, {
     dbName: 'adonis_mongo_auth',
   })
   .then(() => console.log('✅ MongoDB connected'))
