@@ -21,6 +21,12 @@ Halaman yang menjelaskan tujuan, manfaat, serta gambaran umum tentang platform O
 
 ---
 
+## Link Deployment
+
+```bash
+https://oxyplant-production.up.railway.app/
+```
+
 ## How To Install
 
 ### 1. Clone the repository
