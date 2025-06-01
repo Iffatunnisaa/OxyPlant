@@ -4,3 +4,4 @@
 *.js text eol=lf
 package.json text eol=lf
 .env.example text eol=lf
+package-lock.json eol=lf
