@@ -14,8 +14,9 @@ export default class MongoSeeder extends BaseCommand {
   async run() {
     try {
       if (mongoose.connection.readyState === 0) {
+        const mongoUri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/adonis_mongo_auth'
         // Replace with your actual connection string or load from .env
-        await mongoose.connect('mongodb://127.0.0.1:27017/adonis_mongo_auth', {
+        await mongoose.connect(mongoUri, {
           dbName: 'adonis_mongo_auth',
         })
       }
