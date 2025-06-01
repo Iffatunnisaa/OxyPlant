@@ -1,24 +1,23 @@
+# 🌿 OxyPlant
 
-# OxyPlant
+OxyPlant adalah platform manajemen tanaman yang membantu pengguna merawat tanaman dengan lebih terstruktur, terhubung dengan komunitas, dan mendapatkan informasi lengkap seputar perawatan tanaman.
 
-Sebuah aplikasi manajemen tanaman digital dengan autentikasi menggunakan MongoDB dan JWT.
+## 🚀 Fitur Unggulan
 
-## 🚀 Fitur Utama
+### 🌱 Garden Manager
+Mencatat dan mengatur jadwal perawatan tanaman seperti penyiraman, pemupukan, dan pencahayaan.
 
-### 👤 User
-- Registrasi dan login menggunakan email & password
-- Dashboard user untuk melihat status tanaman
-- Logout dan proteksi akses
+### 🌿 Plant Care
+Menyediakan panduan perawatan tanaman secara detail dan mudah dipahami.
 
-### 🛠️ Admin
-- Autentikasi admin
-- Manajemen data pengguna & tanaman
-- Dashboard admin untuk mengelola konten
+### 📖 Plant Info
+Menampilkan informasi lengkap tentang berbagai jenis tanaman, termasuk kebutuhan tumbuhnya.
 
-### 🔒 Keamanan
-- Password di-hash menggunakan **bcrypt**
-- JSON Web Token (JWT) untuk otentikasi
-- Cookie-based session untuk menjaga sesi pengguna
+### 👥 Community
+Halaman yang menampilkan aktivitas tanaman pengguna lain seperti penyiraman dan panen. Pengguna bisa saling terinspirasi dan terhubung melalui informasi tanaman dan statusnya.
+
+### ℹ️ About
+Halaman yang menjelaskan tujuan, manfaat, serta gambaran umum tentang platform OxyPlant dan fitur-fitur utamanya.
 
 ---
 
