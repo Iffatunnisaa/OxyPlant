@@ -75,13 +75,19 @@ MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/adonis_mongo
 node ace build
 ```
 
-### 7. Run the application
+### 7. Seed data awal MongoDB
+
+```bash
+node ace mongo:seeder
+```
+
+### 8. Run the application
 
 ```bash
 node build/server.js
 ```
 
-### 8. Open your browser
+### 9. Open your browser
 
 ```
 http://localhost:3333
